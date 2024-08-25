@@ -1,5 +1,5 @@
 from abc import ABC
-from src.message.message import Message
+from freedom.message.message import Message
 
 
 class MessageRepository(ABC):

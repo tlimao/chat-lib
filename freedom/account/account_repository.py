@@ -1,5 +1,5 @@
 from abc import ABC
-from src.account.account import Account
+from freedom.account.account import Account
 
 
 class AccountRepository(ABC):

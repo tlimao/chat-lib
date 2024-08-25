@@ -1,8 +1,8 @@
 from dataclasses import dataclass, field
 from datetime import datetime
 
-from src.message.message import Message
-from src.utils.serializable import Serializable
+from freedom.message.message import Message
+from freedom.utils.serializable import Serializable
 
 @dataclass
 class Envelope(Serializable):

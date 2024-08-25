@@ -4,7 +4,7 @@ from typing import Any
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 
-from src.utils.serializable import Serializable
+from freedom.utils.serializable import Serializable
 
 
 class SessionState(Enum):

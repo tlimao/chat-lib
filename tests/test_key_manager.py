@@ -2,12 +2,12 @@ import pytest
 from fakeredis import FakeRedis
 from unittest.mock import MagicMock
 
-from src.key.error.key_not_delivered_error import KeyNotDeliveredError
-from src.key.error.key_not_found_error import KeyNotFoundError
-from src.key.key import Key
-from src.key.key_manager import KeyManager
-from src.key.key_repository import KeyRepository
-from src.key.key_repository_impl import KeyRepositoryImpl
+from freedom.key.error.key_not_delivered_error import KeyNotDeliveredError
+from freedom.key.error.key_not_found_error import KeyNotFoundError
+from freedom.key.key import Key
+from freedom.key.key_manager import KeyManager
+from freedom.key.key_repository import KeyRepository
+from freedom.key.key_repository_impl import KeyRepositoryImpl
 
 
 @pytest.fixture

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from src.key.key import Key
+from freedom.key.key import Key
 
 
 class KeyRepository(ABC):

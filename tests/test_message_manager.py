@@ -4,12 +4,12 @@ import uuid
 from fakeredis import FakeRedis
 from unittest.mock import MagicMock
 
-from src.message.envelope import Envelope
-from src.message.error.messages_not_delivered_error import MessagesNotDeliveredError
-from src.message.error.messages_not_found_error import MessagesNotFoundError
-from src.message.message import Message
-from src.message.message_manager import MessageManager
-from src.message.message_repository_impl import MessageRepositoryImpl
+from freedom.message.envelope import Envelope
+from freedom.message.error.messages_not_delivered_error import MessagesNotDeliveredError
+from freedom.message.error.messages_not_found_error import MessagesNotFoundError
+from freedom.message.message import Message
+from freedom.message.message_manager import MessageManager
+from freedom.message.message_repository_impl import MessageRepositoryImpl
 
 @pytest.fixture
 def fake_redis():

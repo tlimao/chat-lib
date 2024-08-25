@@ -1,12 +1,12 @@
 import pytest
 from fakeredis import FakeRedis
 from unittest.mock import MagicMock
-from src.session.error.session_not_found_error import SessionNotFoundError
-from src.session.session_manager import SessionManager
-from src.session.session import Session, SessionState
-from src.session.error.session_not_created_error import SessionNotCreatedError
-from src.session.session_repository import SessionRepository
-from src.session.session_repository_impl import SessionRepositoryImpl
+from freedom.session.error.session_not_found_error import SessionNotFoundError
+from freedom.session.session_manager import SessionManager
+from freedom.session.session import Session, SessionState
+from freedom.session.error.session_not_created_error import SessionNotCreatedError
+from freedom.session.session_repository import SessionRepository
+from freedom.session.session_repository_impl import SessionRepositoryImpl
 
 @pytest.fixture
 def fake_redis():

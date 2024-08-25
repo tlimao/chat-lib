@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from src.utils.serializable import Serializable
+from freedom.utils.serializable import Serializable
 
 
 @dataclass(frozen=True)

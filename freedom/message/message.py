@@ -2,7 +2,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any
 
-from src.utils.serializable import Serializable
+from freedom.utils.serializable import Serializable
 
 
 @dataclass(frozen=True)
