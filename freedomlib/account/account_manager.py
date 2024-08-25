@@ -25,7 +25,8 @@ class AccountManager:
         try:
             account: Account = Account(
                 id=str(uuid.uuid4()),
-                nick=account_info.nick)
+                nick=account_info.nick,
+                email=account_info.email)
             
             self._account_repository.save(account)
             

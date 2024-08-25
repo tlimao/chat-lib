@@ -1,4 +1,5 @@
 *.pyc
+env/*
 build/*
 dist/*
 freedom_lib.egg-info/*

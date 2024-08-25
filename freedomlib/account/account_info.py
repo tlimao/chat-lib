@@ -5,14 +5,14 @@ from freedomlib.utils.serializable import Serializable
 
 @dataclass(frozen=True)
 class AccountInfo(Serializable):
-    
-    id: str
+
     nick: str
+    email: str
 
     def to_dict(self) -> dict:
         return {
-            "id": self.id,
-            "nick": self.nick
+            "nick": self.nick,
+            "email": self.email
         }
     
     
