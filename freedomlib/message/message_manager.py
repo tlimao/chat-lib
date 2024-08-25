@@ -1,10 +1,10 @@
-from freedom.message.envelope import Envelope
-from freedom.message.error.message_not_deleted_error import MessageNotDeletedError
-from freedom.message.error.message_not_updated_error import MessageNotUpdatedError
-from freedom.message.message import Message
-from freedom.message.message_repository import MessageRepository
-from freedom.message.error.messages_not_delivered_error import MessagesNotDeliveredError
-from freedom.message.error.messages_not_found_error import MessagesNotFoundError
+from freedomlib.message.envelope import Envelope
+from freedomlib.message.error.message_not_deleted_error import MessageNotDeletedError
+from freedomlib.message.error.message_not_updated_error import MessageNotUpdatedError
+from freedomlib.message.message import Message
+from freedomlib.message.message_repository import MessageRepository
+from freedomlib.message.error.messages_not_delivered_error import MessagesNotDeliveredError
+from freedomlib.message.error.messages_not_found_error import MessagesNotFoundError
 
 
 class MessageManager:

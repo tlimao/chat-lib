@@ -1,7 +1,7 @@
-from freedom.session.error.session_not_found_error import SessionNotFoundError
-from freedom.session.error.session_not_created_error import SessionNotCreatedError
-from freedom.session.session_repository import SessionRepository
-from freedom.session.session import Session
+from freedomlib.session.error.session_not_found_error import SessionNotFoundError
+from freedomlib.session.error.session_not_created_error import SessionNotCreatedError
+from freedomlib.session.session_repository import SessionRepository
+from freedomlib.session.session import Session
 
 
 class SessionManager:

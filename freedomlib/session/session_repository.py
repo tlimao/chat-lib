@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from freedom.session.session import Session
+from freedomlib.session.session import Session
 
 
 class SessionRepository(ABC):

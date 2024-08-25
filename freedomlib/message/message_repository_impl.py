@@ -1,8 +1,8 @@
 import json
 from redis import Redis
 
-from freedom.message.message_repository import MessageRepository
-from freedom.message.message import Message
+from freedomlib.message.message_repository import MessageRepository
+from freedomlib.message.message import Message
 
 class MessageRepositoryImpl(MessageRepository):
     

@@ -1,8 +1,8 @@
 import json
 
 from redis import Redis
-from freedom.session.session import Session
-from freedom.session.session_repository import SessionRepository
+from freedomlib.session.session import Session
+from freedomlib.session.session_repository import SessionRepository
 
 
 class SessionRepositoryImpl(SessionRepository):

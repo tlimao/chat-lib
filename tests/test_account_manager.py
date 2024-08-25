@@ -2,13 +2,13 @@ import pytest
 from fakeredis import FakeRedis
 from unittest.mock import MagicMock
 
-from freedom.account.error.account_not_found_error import AccountNotFoundError
-from freedom.account.account import Account
-from freedom.account.account_info import AccountInfo
-from freedom.account.account_manager import AccountManager
-from freedom.account.account_repository import AccountRepository
-from freedom.account.account_repository_impl import AccountRepositoryImpl
-from freedom.account.error.account_not_created_error import AccountNotCreatedError
+from freedomlib.account.error.account_not_found_error import AccountNotFoundError
+from freedomlib.account.account import Account
+from freedomlib.account.account_info import AccountInfo
+from freedomlib.account.account_manager import AccountManager
+from freedomlib.account.account_repository import AccountRepository
+from freedomlib.account.account_repository_impl import AccountRepositoryImpl
+from freedomlib.account.error.account_not_created_error import AccountNotCreatedError
 
 @pytest.fixture
 def fake_redis():

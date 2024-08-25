@@ -1,10 +1,10 @@
 import uuid
-from freedom.account.account import Account
-from freedom.account.account_info import AccountInfo
-from freedom.account.account_repository import AccountRepository
-from freedom.account.error.account_not_created_error import AccountNotCreatedError
-from freedom.account.error.account_not_deleted_error import AccountNotDeletedError
-from freedom.account.error.account_not_found_error import AccountNotFoundError
+from freedomlib.account.account import Account
+from freedomlib.account.account_info import AccountInfo
+from freedomlib.account.account_repository import AccountRepository
+from freedomlib.account.error.account_not_created_error import AccountNotCreatedError
+from freedomlib.account.error.account_not_deleted_error import AccountNotDeletedError
+from freedomlib.account.error.account_not_found_error import AccountNotFoundError
 
 
 class AccountManager:

@@ -1,9 +1,9 @@
-from freedom.key.error.key_not_deleted_error import KeyNotDeletedError
-from freedom.key.error.key_not_delivered_error import KeyNotDeliveredError
-from freedom.key.error.key_not_found_error import KeyNotFoundError
-from freedom.key.error.key_not_updated_error import KeyNotUpdatedError
-from freedom.key.key import Key
-from freedom.key.key_repository import KeyRepository
+from freedomlib.key.error.key_not_deleted_error import KeyNotDeletedError
+from freedomlib.key.error.key_not_delivered_error import KeyNotDeliveredError
+from freedomlib.key.error.key_not_found_error import KeyNotFoundError
+from freedomlib.key.error.key_not_updated_error import KeyNotUpdatedError
+from freedomlib.key.key import Key
+from freedomlib.key.key_repository import KeyRepository
 
 
 class KeyManager:

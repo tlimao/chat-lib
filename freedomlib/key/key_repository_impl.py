@@ -1,7 +1,7 @@
 import json
 from redis import Redis
-from freedom.key.key import Key
-from freedom.key.key_repository import KeyRepository
+from freedomlib.key.key import Key
+from freedomlib.key.key_repository import KeyRepository
 
 
 class KeyRepositoryImpl(KeyRepository):

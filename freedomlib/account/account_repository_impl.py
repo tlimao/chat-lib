@@ -1,8 +1,8 @@
 import json
 
 from redis import Redis
-from freedom.account.account import Account
-from freedom.account.account_repository import AccountRepository
+from freedomlib.account.account import Account
+from freedomlib.account.account_repository import AccountRepository
 
 
 class AccountRepositoryImpl(AccountRepository):
