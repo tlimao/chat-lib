@@ -1,1 +1,4 @@
 *.pyc
+build/*
+dist/*
+freedom_lib.egg-info/*
