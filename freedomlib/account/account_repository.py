@@ -7,7 +7,10 @@ class AccountRepository(ABC):
     def get(self, account_id: str) -> Account:
         ...
 
-    def save(self, account: Account) -> None:
+    def get_by_email(self, email: str) -> Account:
+        ...
+
+    def save(self, account: Account) -> Account:
         ...
 
     def delete(self, account_id: str) -> None:

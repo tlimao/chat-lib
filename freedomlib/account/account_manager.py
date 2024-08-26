@@ -21,6 +21,15 @@ class AccountManager:
         except Exception as e:
             raise AccountNotFoundError(f"Account not found: {e}")
 
+    def get_account_by_email(self, email: str) -> Account:
+        try:
+            account: Account = self._account_repository.get_by_email(email)
+
+            return account
+        
+        except Exception as e:
+            raise AccountNotFoundError(f"Account not found: {e}")
+
     def create_account(self, account_info: AccountInfo) -> Account:
         try:
             account: Account = Account(
