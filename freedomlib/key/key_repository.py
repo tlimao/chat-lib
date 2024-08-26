@@ -10,7 +10,11 @@ class KeyRepository(ABC):
         ...
 
     @abstractmethod
-    def get(self, account_id: str) -> Key:
+    def get(self, key_id: str) -> Key:
+        ...
+
+    @abstractmethod
+    def get_key_by_account_id(self, account_id: str) -> Key:
         ...
 
     @abstractmethod
