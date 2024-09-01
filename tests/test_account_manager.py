@@ -9,6 +9,7 @@ from freedomlib.account.account_manager import AccountManager
 from freedomlib.account.account_repository import AccountRepository
 from freedomlib.account.account_repository_impl import AccountRepositoryImpl
 from freedomlib.account.error.account_not_created_error import AccountNotCreatedError
+from freedomlib.account.error.account_already_exists_error import AccountAlreadyExistsError
 
 @pytest.fixture
 def fake_redis():
@@ -25,63 +26,64 @@ def account_manager(mock_account_repository):
     return AccountManager(mock_account_repository)
 
 def test_create_account_success(account_manager: AccountManager):
-    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com")
+    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com", phonenumber="1234567890")
         
     account: Account = account_manager.create_account(account_info=account_info)
 
     assert account.nick == account_info.nick
     assert account.email == account_info.email
+    assert account.phonenumber == account_info.phonenumber
 
 def test_create_account_failure(account_manager: AccountManager, mock_account_repository: AccountRepository):
-    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com")
-    mock_account_repository.save = MagicMock(side_effect=Exception("Redis error"))
+    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com", phonenumber="1234567890")
+    account_manager.create_account(account_info=account_info)
     
     with pytest.raises(AccountNotCreatedError) as excinfo:
         account_manager.create_account(account_info=account_info)
     
-    assert str(excinfo.value) == "Account not created: Redis error"
+    assert isinstance(excinfo.value, AccountNotCreatedError)
 
 def test_get_account_success(account_manager: AccountManager, mock_account_repository: AccountRepository):
-    account: Account = Account(id="account1", nick="@account1", email="account1@mail.com")
+    account: Account = Account(id="account1", nick="@account1", email="account1@mail.com", phonenumber="1234567890")
     mock_account_repository.save(account)
     
-    result: Account = account_manager.get_account(account_id=account.id)
+    result: Account = account_manager.get_account_by_id(account_id=account.id)
     
     assert result.id == account.id
     assert result.nick == account.nick
     assert result.email == account.email
+    assert result.phonenumber == account.phonenumber
 
-def test_get_account_failure(account_manager: AccountManager, mock_account_repository: AccountRepository):
-    mock_account_repository.get = MagicMock(side_effect=Exception("Redis Error"))
-    
+def test_get_account_failure(account_manager: AccountManager, mock_account_repository: AccountRepository):    
     with pytest.raises(AccountNotFoundError) as excinfo:
-        account_manager.get_account("invalid_account_id")
+        account_manager.get_account_by_id("invalid_key")
     
-    assert str(excinfo.value) == "Account not found: Redis Error"
+    assert isinstance(excinfo.value, AccountNotFoundError)
+    assert str(excinfo.value) == "Account not found: Account with id invalid_key not found"
 
-def test_get_account_by_email_success(account_manager: AccountManager, mock_account_repository: AccountRepository):
-    account: Account = Account(id="account1", nick="@account1", email="account1@mail.com")
-    mock_account_repository.save(account)
+def test_get_account_by_email_success(account_manager: AccountManager):
+    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com", phonenumber="1234567890")
+    account_manager.create_account(account_info)
     
-    result: Account = account_manager.get_account_by_email(email=account.email)
+    result: Account = account_manager.get_account_by_email(email=account_info.email)
     
-    assert result.id == account.id
-    assert result.nick == account.nick
-    assert result.email == account.email
+    assert result.nick == account_info.nick
+    assert result.email == account_info.email
+    assert result.phonenumber == account_info.phonenumber
 
 def test_get_account_by_email_failure(account_manager: AccountManager, mock_account_repository: AccountRepository):
-    mock_account_repository.get_by_email = MagicMock(side_effect=Exception("Redis Error"))
-    
     with pytest.raises(AccountNotFoundError) as excinfo:
         account_manager.get_account_by_email("invalid_email")
     
-    assert str(excinfo.value) == "Account not found: Redis Error"
+    assert isinstance(excinfo.value, AccountNotFoundError)
+    assert str(excinfo.value) == "Account not found: Account with email invalid_email not found"
 
 def test_create_account_exists_failure(account_manager: AccountManager, mock_account_repository: AccountRepository):
-    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com")
+    account_info: AccountInfo = AccountInfo(nick="@account1", email="account1@mail.com", phonenumber="1234567890")
     account_manager.create_account(account_info)
     
     with pytest.raises(AccountNotCreatedError) as excinfo:
         account_manager.create_account(account_info=account_info)
     
+    assert isinstance(excinfo.value, AccountNotCreatedError)
     assert str(excinfo.value) == "Account not created: Account already exists!"

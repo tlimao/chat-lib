@@ -8,11 +8,13 @@ class AccountInfo(Serializable):
 
     nick: str
     email: str
+    phonenumber: str
 
     def to_dict(self) -> dict:
         return {
             "nick": self.nick,
-            "email": self.email
+            "email": self.email,
+            "phonenumber": self.phonenumber	
         }
     
     

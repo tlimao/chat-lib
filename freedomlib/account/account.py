@@ -10,12 +10,14 @@ class Account(Serializable):
     id: str
     nick: str
     email: str
+    phonenumber: str
     
     def to_dict(self) -> dict:
         return {
             "id": self.id,
             "nick": self.nick,
-            "email": self.email
+            "email": self.email,
+            "phonenumber": self.phonenumber
         }
 
     @classmethod
@@ -23,5 +25,6 @@ class Account(Serializable):
         return Account(
             id=data.get("id"),
             nick=data.get("nick"),
-            email=data.get("email")
+            email=data.get("email"),
+            phonenumber=data.get("phonenumber")
         )
