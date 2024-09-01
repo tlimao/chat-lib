@@ -13,7 +13,7 @@ class KeyManager:
     def __init__(self, key_repository: KeyRepository) -> None:
         self._key_repository = key_repository
 
-    def get_key(self, key_id: str) -> Key:
+    def get_key_by_id(self, key_id: str) -> Key:
         try:            
             return self._key_repository.get(key_id)
         except Exception as e:
@@ -28,7 +28,7 @@ class KeyManager:
     def put_key(self, key_info: KeyInfo) -> Key:
         try:
             key: Key = Key(
-                id=str(uuid.uuid4),
+                id=str(uuid.uuid4()),
                 account_id=key_info.account_id,
                 pub_key=key_info.pub_key)
             

@@ -30,7 +30,7 @@ def test_put_key_success(key_manager: KeyManager):
         
     key: Key = key_manager.put_key(key_info)
     
-    result: Key = key_manager.get_key(key.id)
+    result: Key = key_manager.get_key_by_id(key.id)
 
     assert result.account_id == key.account_id
     assert result.pub_key == key.pub_key
@@ -50,7 +50,7 @@ def test_get_key_success(key_manager: KeyManager, mock_key_repository: KeyReposi
     key: Key = Key(account_id="account1", id="key1", pub_key="------BEGIN KEY ------- .....")
     mock_key_repository.save(key)
     
-    result: Key = key_manager.get_key(key.id)
+    result: Key = key_manager.get_key_by_id(key.id)
     
     assert result.id == key.id
     
@@ -66,7 +66,7 @@ def test_get_key_failure(key_manager: KeyManager, mock_key_repository: KeyReposi
     mock_key_repository.get = MagicMock(side_effect=Exception("Redis Error"))
     
     with pytest.raises(KeyNotFoundError) as excinfo:
-        key_manager.get_key("invalid_key_id")
+        key_manager.get_key_by_id("invalid_key_id")
     
     assert str(excinfo.value) == "Key not found: Redis Error"
 
