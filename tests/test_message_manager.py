@@ -95,3 +95,27 @@ def test_put_messages_failure(message_manager: MessageManager, mock_message_repo
         message_manager.put_messages(envelope)
     
     assert str(excinfo.value) == "Messages not delivered: Redis error"
+
+def test_delete_message_success(message_manager: MessageManager, mock_message_repository: MessageRepositoryImpl):
+    message: Message = Message(
+        id=str(uuid.uuid4()),
+        sender_id="account1",
+        recipient_id="account2", 
+        timestamp=int(datetime.now().timestamp()),
+        nonce=bytearray(12),
+        tag=bytearray(12),
+        cipher_message=bytearray(12))
+    
+    envelope: Envelope = Envelope(messages=[message])
+
+    message_manager.put_messages(envelope)
+
+    envelope: Envelope = message_manager.get_messages(message.sender_id)
+
+    assert len(envelope.messages) == 1
+
+    message_manager.delete_message(message.sender_id, message.id)
+
+    envelope: Envelope = message_manager.get_messages(message.sender_id)
+
+    assert len(envelope.messages) == 0
