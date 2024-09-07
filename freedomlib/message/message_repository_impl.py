@@ -24,11 +24,23 @@ class MessageRepositoryImpl(MessageRepository):
         for message in messages:
             self._redis_connection.set(
                 f"{self.MESSAGE_DIRECTORY}:{message.sender_id}:{message.recipient_id}:{message.id}",
-                json.dumps(message.to_dict()))
+                value=json.dumps(message.to_dict()))
 
             self._redis_connection.set(
                 f"{self.MESSAGE_DIRECTORY}:{message.recipient_id}:{message.sender_id}:{message.id}",
-                json.dumps(message.to_dict()))
+                value=json.dumps(message.to_dict()))
+
+    def save_with_expiration(self, messages: list[Message], expiration: int) -> None:
+        for message in messages:
+            self._redis_connection.setex(
+                f"{self.MESSAGE_DIRECTORY}:{message.sender_id}:{message.recipient_id}:{message.id}",
+                time=expiration,
+                value=json.dumps(message.to_dict()))
+
+            self._redis_connection.setex(
+                f"{self.MESSAGE_DIRECTORY}:{message.recipient_id}:{message.sender_id}:{message.id}",
+                time=expiration,
+                value=json.dumps(message.to_dict()))
 
     def delete(self, account_id: str, message_id: str) -> None:
         message: Message = self._redis_connection.get(f"{self.MESSAGE_DIRECTORY}:{account_id}:{message_id}")

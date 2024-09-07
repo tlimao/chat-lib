@@ -6,6 +6,9 @@ class MessageRepository(ABC):
     
     def save(self, messages: list[Message]) -> None:
         ...
+
+    def save_with_expiration(self, messages: list[Message], expiration: int) -> None:
+        ...
     
     def get(self, account_id: str) -> list[Message]:
         ...

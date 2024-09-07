@@ -24,7 +24,6 @@ class MessageManager:
         try:
            self._message_repository.save(envelope.messages)
         except Exception as e:
-            print(e)
             raise MessagesNotDeliveredError(f"Messages not delivered: {e}")
 
     def delete_message(self, account_id: str, message_id: str) -> None:
