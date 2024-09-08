@@ -10,6 +10,7 @@ class Contact(Serializable):
     nick: str
     email: str
     phonenumber: str
+    pub_key: str
 
     @staticmethod
     def from_json(json_data: str) -> 'Contact':
@@ -20,6 +21,7 @@ class Contact(Serializable):
             "id": self.id,
             "nick": self.nick,
             "email": self.email,
-            "phonenumber": self.phonenumber
+            "phonenumber": self.phonenumber,
+            "pub_key": self.pub_key
         }
 

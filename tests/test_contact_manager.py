@@ -27,7 +27,8 @@ def test_create_contact(contact_manager: ContactManager):
         id="1",
         nick="John Doe",
         email="john.doe@example.com",
-        phonenumber="1234567890"
+        phonenumber="1234567890",
+        pub_key="------BEGIN KEY ------- ....."
     )
     contact = contact_manager.create_contact(contact)
     assert contact.id == "1"
@@ -38,7 +39,8 @@ def test_get_contact(contact_manager: ContactManager):
         id="1",
         nick="John Doe",
         email="john.doe@example.com",
-        phonenumber="1234567890"
+        phonenumber="1234567890",
+        pub_key="------BEGIN KEY ------- ....."
     )
     contact = contact_manager.create_contact(contact)
     contact = contact_manager.get_contact_by_phonenumber("1234567890")
@@ -50,7 +52,8 @@ def test_update_contact(contact_manager: ContactManager):
         id="1",
         nick="John Doe",
         email="john.doe@example.com",
-        phonenumber="1234567890"
+        phonenumber="1234567890",
+        pub_key="------BEGIN KEY ------- ....."
     )
     contact = contact_manager.update_contact(contact)
     assert contact.id == "1"
@@ -61,7 +64,8 @@ def test_delete_contact_by_phonenumber(contact_manager: ContactManager):
         id="1",
         nick="John Doe",
         email="john.doe@example.com",
-        phonenumber="1234567890"
+        phonenumber="1234567890",
+        pub_key="------BEGIN KEY ------- ....."
     )
     contact = contact_manager.create_contact(contact)
     contact_manager.delete_contact_by_phonenumber("1234567890")
@@ -73,7 +77,8 @@ def test_delete_contact_by_email(contact_manager: ContactManager):
         id="1",
         nick="John Doe",
         email="john.doe@example.com",
-        phonenumber="1234567890"
+        phonenumber="1234567890",
+        pub_key="------BEGIN KEY ------- ....."
     )
     contact = contact_manager.create_contact(contact)
     contact_manager.delete_contact_by_email("john.doe@example.com")
