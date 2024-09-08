@@ -32,6 +32,12 @@ class MessageManager:
         except Exception as e:
             raise MessageNotDeletedError(f"Message not deleted: {e}")
 
+    def delete_message_for_me(self, account_id: str, message_id: str) -> None:
+        try:
+            self._message_repository.delete_for_me(account_id=account_id, message_id=message_id)
+        except Exception as e:
+            raise MessageNotDeletedError(f"Message not deleted: {e}")
+
     def update_message(self, message: Message) -> None:
         try:
             self._message_repository.update(message)

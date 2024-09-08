@@ -54,5 +54,14 @@ class MessageRepositoryImpl(MessageRepository):
             self._redis_connection.delete(
                 f"{self.MESSAGE_DIRECTORY}:{message.recipient_id}:{message_id}")
 
+    def delete_for_me(self, account_id: str, message_id: str) -> None:
+        message_data: bytes = self._redis_connection.get(f"{self.MESSAGE_DIRECTORY}:{account_id}:{message_id}")
+        
+        if (message_data):
+            message: Message = Message.from_dict(json.loads(message_data))
+
+            self._redis_connection.delete(
+                f"{self.MESSAGE_DIRECTORY}:{account_id}:{message_id}")
+
     def update(self, message: Message) -> Message:
         self.save([message])
