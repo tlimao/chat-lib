@@ -5,7 +5,7 @@ from freedomlib.account.account import Account
 class AccountRepository(ABC):
     
     @abstractmethod
-    def get_by_id(self, account_id: str) -> Account:
+    def get_by_aci(self, aci: str) -> Account:
         ...
 
     @abstractmethod
@@ -21,7 +21,7 @@ class AccountRepository(ABC):
         ...
 
     @abstractmethod
-    def delete(self, account_id: str) -> None:
+    def delete(self, aci: str) -> None:
         ...
 
     @abstractmethod

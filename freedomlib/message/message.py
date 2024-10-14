@@ -9,8 +9,8 @@ from freedomlib.utils.serializable import Serializable
 class Message(Serializable):
 
     id: str
-    sender_id: str
-    recipient_id: str
+    sender_aci: str
+    recipient_aci: str
     nonce: bytes
     tag: bytes
     cipher_message: bytes
@@ -19,8 +19,8 @@ class Message(Serializable):
     def to_dict(self) -> dict:
         return {
             "id": self.id,
-            "sender_id": self.sender_id,
-            "recipient_id": self.recipient_id,
+            "sender_aci": self.sender_aci,
+            "recipient_aci": self.recipient_aci,
             "timestamp": self.timestamp,
             "nonce": Serializable.bytes_to_str(self.nonce),
             "tag": Serializable.bytes_to_str(self.tag),
@@ -31,8 +31,8 @@ class Message(Serializable):
     def from_dict(cls, data: dict) -> Any:
         return Message(
             id=data.get("id"),
-            sender_id=data.get("sender_id"),
-            recipient_id=data.get("recipient_id"),
+            sender_aci=data.get("sender_aci"),
+            recipient_aci=data.get("recipient_aci"),
             timestamp=data.get("timestamp"),
             nonce=Serializable.str_to_bytes(data.get("nonce")),
             tag=Serializable.str_to_bytes(data.get("tag")),

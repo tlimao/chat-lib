@@ -6,7 +6,7 @@ from freedomlib.utils.serializable import Serializable
 @dataclass(frozen=True)
 class Contact(Serializable):
     
-    id: str
+    aci: str
     nick: str
     email: str
     phonenumber: str
@@ -18,7 +18,7 @@ class Contact(Serializable):
     
     def to_dict(self) -> dict:
         return {
-            "id": self.id,
+            "aci": self.aci,
             "nick": self.nick,
             "email": self.email,
             "phonenumber": self.phonenumber,

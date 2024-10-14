@@ -7,24 +7,30 @@ from freedomlib.utils.serializable import Serializable
 @dataclass(frozen=True)
 class Account(Serializable):
     
-    id: str
+    aci: str
     nick: str
     email: str
     phonenumber: str
-    
+    discoverable: bool
+    pin_hash: str
+
     def to_dict(self) -> dict:
         return {
-            "id": self.id,
+            "aci": self.aci,
             "nick": self.nick,
             "email": self.email,
-            "phonenumber": self.phonenumber
+            "phonenumber": self.phonenumber,
+            "discoverable": self.discoverable,
+            "pin_hash": self.pin_hash,
         }
 
     @classmethod
     def from_dict(cls, data: dict) -> Any:
         return Account(
-            id=data.get("id"),
+            aci=data.get("aci"),
             nick=data.get("nick"),
             email=data.get("email"),
-            phonenumber=data.get("phonenumber")
+            phonenumber=data.get("phonenumber"),
+            discoverable=data.get("discoverable"),
+            pin_hash=data.get("pin_hash")
         )

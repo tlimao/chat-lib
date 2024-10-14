@@ -8,13 +8,13 @@ from freedomlib.utils.serializable import Serializable
 class Key(Serializable):
     
     id: str
-    account_id: str
+    aci: str
     pub_key: str
 
     def to_dict(self) -> dict:
         return {
             "id": self.id,
-            "account_id": self.account_id,
+            "aci": self.aci,
             "pub_key": self.pub_key,
         }
 
@@ -22,6 +22,6 @@ class Key(Serializable):
     def from_dict(cls, data: dict) -> Any:
         return Key(
             id=data.get("id"),
-            account_id=data.get("account_id"),
+            aci=data.get("aci"),
             pub_key =data.get("pub_key")
         )

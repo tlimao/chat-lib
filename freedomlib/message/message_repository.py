@@ -10,13 +10,13 @@ class MessageRepository(ABC):
     def save_with_expiration(self, messages: list[Message], expiration: int) -> None:
         ...
     
-    def get(self, account_id: str) -> list[Message]:
+    def get(self, aci: str) -> list[Message]:
         ...
 
-    def delete(self, account_id: str, message_id: str) -> None:
+    def delete(self, aci: str, message_id: str) -> None:
         ...
 
-    def delete_for_me(self, account_id: str, message_id: str) -> None:
+    def delete_for_me(self, aci: str, message_id: str) -> None:
         ...
 
     def update(self, message: Message) -> Message:

@@ -3,3 +3,4 @@ env/*
 build/*
 dist/*
 freedom_lib.egg-info/*
+bash.exe.stackdump
