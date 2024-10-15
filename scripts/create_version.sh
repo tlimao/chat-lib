@@ -65,4 +65,5 @@ fi
 # Comita as mudanças
 git add "$SETUP_FILE"
 git commit -m "Preparar release $NEW_VERSION"
-git push --set-upstream origin $BRANCH_NAME 
+git push --set-upstream origin $BRANCH_NAME
+git check $BRANCH_NAME
