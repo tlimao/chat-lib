@@ -10,6 +10,7 @@ class Contact(Serializable):
     nick: str
     email: str
     phonenumber: str
+    discoverable: bool
     pub_key: str
 
     @staticmethod
@@ -22,6 +23,7 @@ class Contact(Serializable):
             "nick": self.nick,
             "email": self.email,
             "phonenumber": self.phonenumber,
+            "discoverable": self.discoverable,
             "pub_key": self.pub_key
         }
 
