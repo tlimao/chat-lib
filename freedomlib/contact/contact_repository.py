@@ -5,20 +5,20 @@ class ContactRepository(ABC):
 
     @abstractmethod
     def get_by_phonenumber(self, phonenumber: str) -> Contact:
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def get_by_email(self, email: str) -> Contact:
-        pass
+        raise NotImplementedError()
     
     @abstractmethod
     def save(self, contact: Contact) -> Contact:
-        pass
+        raise NotImplementedError()
     
     @abstractmethod
     def delete(self, aci: str) -> None:
-        pass
+        raise NotImplementedError()
 
     @abstractmethod
     def update(self, contact: Contact) -> Contact:
-        pass
+        raise NotImplementedError()

@@ -1,4 +1,3 @@
-import os
 from abc import ABC
 from typing import Tuple
 from cryptography.hazmat.primitives import hashes
@@ -6,7 +5,7 @@ from cryptography.hazmat.primitives.kdf.hkdf import HKDF
 from cryptography.hazmat.primitives.asymmetric.x25519 import X25519PrivateKey, X25519PublicKey
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey, Ed25519PublicKey
 
-class EC25519(ABC):
+class X25519(ABC):
     
     @classmethod
     def create_key_pair(cls) -> Tuple:
@@ -26,6 +25,14 @@ class EC25519(ABC):
     @classmethod
     def shared_key(cls, private_key: X25519PrivateKey, public_key: X25519PublicKey) -> bytes:
         return private_key.exchange(public_key)
+    
+    @classmethod
+    def load_public_key_from_pem(cls) -> X25519PublicKey:
+        ...
+
+    @classmethod
+    def load_private_key_from_pem(cls) -> X25519PrivateKey:
+        ...
 
 class ED25519(ABC):
     
@@ -43,4 +50,12 @@ class ED25519(ABC):
     @classmethod
     def verify(cls, public_key: Ed25519PublicKey, signature: bytes,  data: bytes) -> None:
         return public_key.verify(signature, data)
+
+    @classmethod
+    def load_public_key_from_pem(cls) -> Ed25519PublicKey:
+        ...
+
+    @classmethod
+    def load_private_key_from_pem(cls) -> Ed25519PrivateKey:
+        ...
         

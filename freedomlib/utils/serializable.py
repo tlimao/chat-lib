@@ -7,7 +7,7 @@ class Serializable(ABC):
     
     @abstractmethod
     def to_dict(self) -> dict:
-        ...
+        raise NotImplementedError()
 
     @classmethod
     def bytes_to_str(cls, value: bytes) -> str:
