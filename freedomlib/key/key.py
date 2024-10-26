@@ -9,13 +9,15 @@ class Key(Serializable):
     
     id: str
     aci: str
-    pub_key: str
+    x25519_pub_key: str
+    ed25519_pub_key: str
 
     def to_dict(self) -> dict:
         return {
             "id": self.id,
             "aci": self.aci,
-            "pub_key": self.pub_key,
+            "x25519_pub_key": self.x25519_pub_key,
+            "ed25519_pub_key": self.ed25519_pub_key
         }
 
     @classmethod
@@ -23,5 +25,6 @@ class Key(Serializable):
         return Key(
             id=data.get("id"),
             aci=data.get("aci"),
-            pub_key =data.get("pub_key")
+            x25519_pub_key=data.get("x25519_pub_key"),
+            ed25519_pub_key=data.get("ed25519_pub_key")
         )
