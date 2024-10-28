@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='freedom-lib',
-    version='2.1.0',
+    version='3.0.0',
     url='https://github.com/tlimao/freedom-lib',
     author='@w!l',
     author_email='tloime@gmail.com',
