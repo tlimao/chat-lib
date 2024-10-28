@@ -2,6 +2,6 @@
 {
     "id": "0192cbdb-12c0-7b66-b6f6-477fbde832b1",
     "aci": "0192cbd2-6daa-7c10-9227-fe302dd0fe21",
-    "ed25519_pub_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA6VNGou/vk+MJTY5PYMGQgNHFRXe/nq51cWhX41vNb60=\n-----END PUBLIC KEY-----",
-    "x25519_pub_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VuAyEA6ZFKtWm3gwALAaAccd+PVcbS57vLu8S23UWViwV5x3c=\n-----END PUBLIC KEY-----"
+    "ed25519_public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEA6VNGou/vk+MJTY5PYMGQgNHFRXe/nq51cWhX41vNb60=\n-----END PUBLIC KEY-----",
+    "x25519_public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VuAyEA6ZFKtWm3gwALAaAccd+PVcbS57vLu8S23UWViwV5x3c=\n-----END PUBLIC KEY-----"
 }

@@ -20,8 +20,8 @@ def test_crypto_message() -> None:
     ricky_kbox: KeyBox = KeyBox(
         id="ricky_key_box_id",
         aci=ricky_aci,
-        x25519_pub_key=ricky_x25519_public_key,
-        ed25519_pub_key=ricky_ed25519_public_key
+        x25519_public_key=ricky_x25519_public_key,
+        ed25519_public_key=ricky_ed25519_public_key
     )
 
     # Morty keys
@@ -31,14 +31,14 @@ def test_crypto_message() -> None:
     morty_kbox: KeyBox = KeyBox(
         id="morty_key_box_id",
         aci=morty_aci,
-        x25519_pub_key=morty_x25519_public_key,
-        ed25519_pub_key=morty_ed25519_public_key
+        x25519_public_key=morty_x25519_public_key,
+        ed25519_public_key=morty_ed25519_public_key
     )
     
     # Morty send a message to Ricky
     message: str = MESSAGE
     
-    morty_shared_key = X25519.shared_key(morty_x25519_private_key, ricky_kbox.x25519_pub_key)
+    morty_shared_key = X25519.shared_key(morty_x25519_private_key, ricky_kbox.x25519_public_key)
     morty_derived_key = X25519.derive_key(morty_shared_key)
     
     nonce: bytes = os.urandom(12)
@@ -64,7 +64,7 @@ def test_crypto_message() -> None:
     
     message_obj_rebuild: Message = Message.from_dict(message_dict)
     
-    ricky_shared_key = X25519.shared_key(ricky_x25519_private_key, morty_kbox.x25519_pub_key)
+    ricky_shared_key = X25519.shared_key(ricky_x25519_private_key, morty_kbox.x25519_public_key)
     ricky_derived_key = X25519.derive_key(ricky_shared_key)
     
     decryptor: base.AEADEncryptionContext = Cipher(

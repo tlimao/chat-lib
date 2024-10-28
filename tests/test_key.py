@@ -22,15 +22,15 @@ def test_load_key_from_json() -> None:
     
     assert key_box.id == key_box_data.get("id")
     assert key_box.aci == key_box_data.get("aci")
-    assert key_box.ed25519_pub_key == key_box_data.get("ed25519_pub_key")
-    assert key_box.x25519_pub_key == key_box_data.get("x25519_pub_key")
+    assert key_box.ed25519_public_key == key_box_data.get("ed25519_public_key")
+    assert key_box.x25519_public_key == key_box_data.get("x25519_public_key")
     
     key_box_json: dict = key_box.to_dict()
     
     assert key_box_json.get("id") == key_box_data.get("id")
     assert key_box_json.get("aci") == key_box_data.get("aci")
-    assert key_box_json.get("ed25519_pub_key") == key_box_data.get("ed25519_pub_key")
-    assert key_box_json.get("x25519_pub_key") == key_box_data.get("x25519_pub_key")
+    assert key_box_json.get("ed25519_public_key") == key_box_data.get("ed25519_public_key")
+    assert key_box_json.get("x25519_public_key") == key_box_data.get("x25519_public_key")
     
     assert isinstance(key_box.load_signing_key(), Ed25519PublicKey)
     assert isinstance(key_box.load_exchange_key(), X25519PublicKey)

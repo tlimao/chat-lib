@@ -9,17 +9,17 @@ class KeyBox(Serializable):
     
     id: str
     aci: str
-    ed25519_pub_key: str
-    x25519_pub_key: str
+    ed25519_public_key: str
+    x25519_public_key: str
 
     def to_dict(self) -> dict:
         return self.__dict__
 
     def load_signing_key(self) -> Ed25519PublicKey:
-        return ED25519.load_public_key_from_pem(self.ed25519_pub_key)
+        return ED25519.load_public_key_from_pem(self.ed25519_public_key)
 
     def load_exchange_key(self) -> X25519PublicKey:
-        return X25519.load_public_key_from_pem(self.x25519_pub_key)
+        return X25519.load_public_key_from_pem(self.x25519_public_key)
 
     @classmethod
     def from_dict(cls, data: dict) -> 'KeyBox':
