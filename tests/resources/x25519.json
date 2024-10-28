@@ -1,0 +1,4 @@
+{
+    "x25519_public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VuAyEAwzhbusC7X9aNcLHacoVMykmgjR2161SL+r195wAyqWc=\n-----END PUBLIC KEY-----",
+    "x25519_private_key": "-----BEGIN PRIVATE KEY-----\nMC4CAQAwBQYDK2VuBCIEINAoOJ5C8F/V2gTmOk3uYDgBCLd9ER0dXkIS3TUFNGdE\n-----END PRIVATE KEY-----" 
+}

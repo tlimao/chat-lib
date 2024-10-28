@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any
 
 from freedomlib.utils.serializable import Serializable
 
@@ -21,20 +20,20 @@ class Message(Serializable):
             "id": self.id,
             "sender_aci": self.sender_aci,
             "recipient_aci": self.recipient_aci,
-            "timestamp": self.timestamp,
-            "nonce": Serializable.bytes_to_str(self.nonce),
-            "tag": Serializable.bytes_to_str(self.tag),
-            "cipher_message": Serializable.bytes_to_str(self.cipher_message)
+            "nonce": Serializable.bytes_to_b64_str(self.nonce),
+            "tag": Serializable.bytes_to_b64_str(self.tag),
+            "cipher_message": Serializable.bytes_to_b64_str(self.cipher_message),
+            "timestamp": self.timestamp
         }
 
     @classmethod
-    def from_dict(cls, data: dict) -> Any:
+    def from_dict(cls, data: dict) -> 'Message':
         return Message(
             id=data.get("id"),
             sender_aci=data.get("sender_aci"),
             recipient_aci=data.get("recipient_aci"),
-            timestamp=data.get("timestamp"),
-            nonce=Serializable.str_to_bytes(data.get("nonce")),
-            tag=Serializable.str_to_bytes(data.get("tag")),
-            cipher_message=Serializable.str_to_bytes(data.get("cipher_message"))
+            nonce=Serializable.b64_str_to_bytes(data.get("nonce")),
+            tag=Serializable.b64_str_to_bytes(data.get("tag")),
+            cipher_message=Serializable.b64_str_to_bytes(data.get("cipher_message")),
+            timestamp=data.get("timestamp")
         )

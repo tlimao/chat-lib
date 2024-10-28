@@ -1,0 +1,4 @@
+{
+    "ed25519_public_key": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAvpD/RP1BKRukhpic4tA13HQNpXIOU3GP/gfEYbxQMxU=\n-----END PUBLIC KEY-----" ,
+    "ed25519_private_key": "-----BEGIN PRIVATE KEY-----\nMC4CAQAwBQYDK2VwBCIEIGL2ycfDgBlLycEeamOZ2f3YN3meDJe/YJVJDRNreeR6\n-----END PRIVATE KEY-----" 
+}
