@@ -49,11 +49,11 @@ class X25519(ABC):
             ).decode('utf-8')
 
     @classmethod
-    def load_public_key_from_pem(cls, public_key_pem: str) -> Ed25519PublicKey:
+    def load_public_key_from_pem(cls, public_key_pem: str) -> X25519PublicKey:
         return serialization.load_pem_public_key(public_key_pem.encode("utf-8"))
 
     @classmethod
-    def load_private_key_from_pem(cls, private_key_pem: str, password: str = None) -> Ed25519PrivateKey:
+    def load_private_key_from_pem(cls, private_key_pem: str, password: str = None) -> X25519PrivateKey:
         return serialization.load_pem_private_key(
                 private_key_pem.encode("utf-8"), 
                 password=password.encode("utf-8") if password else None
